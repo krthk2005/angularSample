@@ -1,4 +1,4 @@
-app = angular.module('myApp', ['ngRoute','homeModule']);
+app = angular.module('myApp', ['ngRoute','homeModule','app.services']);
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider) {
 	$routeProvider.
