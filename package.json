@@ -1,0 +1,26 @@
+{
+  "name": "Kartheek s Application",
+  "version": "1.0.0",
+  "description": "Kartheek s project",
+  "main": "index.js",
+  "dependencies": {
+    "angular-resource": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.0",
+    "jsonfile": "^2.2.3",
+    "serve-static": "^1.10.2",
+    "connect": "^3.4.1",
+    "angular-route": "^1.5.0",
+    "express": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "kartheek",
+    "project"
+  ],
+  "author": "kartheek",
+  "license": "ISC"
+}
