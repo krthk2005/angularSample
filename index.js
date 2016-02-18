@@ -1,78 +1,29 @@
 var express = require('express'),
   http = require('http');
 
-var airports = require('./data/airports.json');
-var flights = require('./data/flights.json');
-var reservations = [];
-var cars = [];
+var employees = require('./data/employees.json');
+var employeeModifications = [];
 
-for (var i = 0; i < flights.length; i++) {
-  flights[i].originFullName = airports[flights[i].origin].name;
-  flights[i].destinationFullName = airports[flights[i].destination].name;
-}
 
-function getMatchingFlights (data) {
-  return flights.filter(function  (item) {
-    return (item.origin === data.origin) &&
-      (item.destination === data.destination);
-  });
-}
+var jsonfile = require('jsonfile')
+var util = require('util')
+
+var file = './data/employees.json'
+
 
 var app = express()
   .use(express.bodyParser())
-  .use(express.static('public'));
-
-app.get('/airports', function  (req, res) {
-  res.json(airports);
+  .use(express.static(__dirname + '/public'))
+  .use('/node_modules',  express.static(__dirname + '/node_modules'));
+ 
+app.get('/employees', function  (req, res) {
+  res.json(jsonfile.readFileSync(file));
 });
 
-app.get('/airports/:airport', function (req, res) {
-  if (typeof airports[req.params.airport] === 'undefined') {
-    res.json(404, {status: 'not found - invalid airport code'});
-  } else {
-    res.json(airports[req.params.airport]);
-  }
+app.post('/employeeModifications', function  (req, res) {
+   jsonfile.writeFileSync(file, req.body)
+   res.send("success");
 });
-
-app.get('/flights', function (req, res) {
-  res.json(flights);
-});
-
-app.get('/flights/:origin', function (req, res) {
-  var with_origin = flights.filter(function  (item) {
-    return item.origin === req.params.origin;
-  });
-
-  res.json(with_origin);
-});
-
-app.get('/flights/:origin/:destination', function (req, res) {
-  var matches = getMatchingFlights(req.params);
-
-  res.json(matches);
-});
-
-app.get('/reservations', function  (req, res) {
-  res.json(reservations);
-});
-
-app.post('/reservations', function  (req, res) {
-  var matches = getMatchingFlights(req.body);
-
-  if (matches.length) {
-    reservations.push(matches[0]);
-    res.json(matches[0]);
-  } else {
-    res.status(404).end();
-  }
-});
-app.get('/cars', function  (req, res) {
-  res.json(cars);
-});
-app.post('cars/', function(req, res) {
-  writeToFile('data.json', req.body); // I do not know how to write files, something like this
-  res.send();
-})
 
 app.get('/*', function  (req, res) {
   res.json(404, {status: 'not found'});
