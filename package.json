@@ -1,7 +1,7 @@
 {
-  "name": "Kartheek s Application",
+  "name": "sampleone",
   "version": "1.0.0",
-  "description": "Kartheek s project",
+  "description": "sample test project",
   "main": "index.js",
   "dependencies": {
     "angular-resource": "^1.5.0",
@@ -15,13 +15,19 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krthk2005/angularSample.git"
   },
   "keywords": [
-    "kartheek",
-    "project"
+    "test"
   ],
   "author": "kartheek",
-  "author": "kartheek",
-  "license": "ISC"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krthk2005/angularSample/issues"
+  },
+  "homepage": "https://github.com/krthk2005/angularSample#readme"
 }
