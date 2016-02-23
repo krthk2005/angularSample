@@ -24,7 +24,7 @@ controller('HomeCtrl', ['$scope','GetEmployees','PostEmployees' ,'ExcelConverter
 	}
 	$scope.saveModData = function(){
 		 PostEmployees.save($scope.employeeData,function(obj){
-		 	alert(obj.data)
+		 	alert(obj)
 		 });
 	}
 }])
