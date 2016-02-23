@@ -21,9 +21,8 @@ app.get('/employees', function  (req, res) {
 });
 
 app.post('/employeeModifications', function  (req, res) {
-	var obj = {"data":"success"}
    jsonfile.writeFileSync(file, req.body)
-   res.send(obj);
+   res.send("success");
 });
 
 app.get('/*', function  (req, res) {
