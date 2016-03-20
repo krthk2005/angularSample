@@ -10,7 +10,7 @@ To get this server running, do the following:
 * Type `node index.js` to start the server
 * Go to [http://localhost:3000](http://localhost:3000) in your browser. The port number can be changed in `index.js` if necessary
 
-Need to use eacha and every module as mentioned below
+Need to use each and every module as mentioned below
 * bower
 * gulp
 * uglify
